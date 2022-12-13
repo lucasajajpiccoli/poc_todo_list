@@ -1,12 +1,22 @@
+import { useState } from "react";
 import styled from 'styled-components';
 import Input from './Input';
 import List from './List';
 
 export default function Box() {
+  const [list, setList] = useState([]);
+
   return (
     <Wrapper>
-      <Input placeholder="Type your task up to 30 characters and Enter!" />
-      <List />
+      <Input 
+        placeholder="Type your task up to 30 characters and Enter!"
+        setList={setList}
+        list={list}
+      />
+      <List
+        setList={setList}
+        list={list}
+      />
     </Wrapper>
   );
 }

@@ -1,10 +1,16 @@
 import styled from 'styled-components';
 import Task from './Task';
 
-export default function List() {
+export default function List({ list, setList }) {
   return (
     <Wrapper>
-      {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map(_item => <Task />)}
+      {list.map((_task, key) =>
+        <Task
+          id={key}
+          list={list}
+          setList={setList}
+          key={key} />
+      )}
     </Wrapper>
 
   );

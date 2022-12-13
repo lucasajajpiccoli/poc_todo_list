@@ -1,10 +1,37 @@
+import { useState } from "react";
 import styled from "styled-components";
 
-export default function Input({ placeholder }) {
-  return (
-    <Wrapper placeholder={placeholder}>
+export default function Input({ placeholder, setList, list }) {
+  const [text, setText] = useState("");
 
-    </Wrapper>
+  function handleInput(event) {
+    setText(event.target.value);
+  }
+
+  function handleKeyDown(event) {
+    const { value } = event.target;
+    const { key } = event;
+    if (key === "Enter" && value.length <= 30) {
+      setList(
+        [
+          ...list,
+          {
+            text: value,
+            isChecked: false
+          }
+        ]
+      );
+      setText("");
+    }
+  }
+
+  return (
+    <Wrapper
+      placeholder={placeholder}
+      value={text}
+      onChange={handleInput}
+      onKeyDown={handleKeyDown}
+    />
   );
 }
 
