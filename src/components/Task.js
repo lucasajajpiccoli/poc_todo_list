@@ -27,18 +27,21 @@ export default function Task({ id, list, setList }) {
           list[id].isChecked
             ?
             <ImCheckboxChecked
+              data-testid="checked"
               size="25px"
               color="#4CAF50"
               onClick={handleUncheckClick}
             />
             :
             <ImCheckboxUnchecked
+              data-testid="unchecked"
               size="25px"
               color="#FFB74D"
               onClick={handleCheckClick}
             />
         }
         <ImBin2
+          data-testid="deletion"
           size="25px"
           color="#525252"
           onClick={handleTrashClick}
